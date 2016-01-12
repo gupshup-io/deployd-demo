@@ -6,12 +6,13 @@ var options = { method: 'POST',
    { 'content-type': 'application/x-www-form-urlencoded',
      'postman-token': '6c65611a-f2fe-f7da-5e85-3f56d4f590b2',
      'cache-control': 'no-cache',
-     apikey: 'f9191e5c7d344ef6ce7a1316468b496e' },
+     apikey: '23694a99d1f4466dc6cb0241a54c5b21' },
   form:
-   { question: 'sample question',
-     msgType: 'poll',
-     msgDesc: 'a poll for testing',
-     smsCreds: '{"accountId":"2000144103", "password":"u46dn4", "recipients":["9203686356"], "source":"test" }',
+   { 
+      question: 'Do you like icecreams ?',
+      msgType: 'poll',
+      msgDesc: 'a poll for testing',
+      smsCreds: '{"accountId":"2000151262", "password":"aZfgX5", "recipients":["+15186334898"], "source":"test" }',
    }
 };
 
