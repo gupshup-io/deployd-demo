@@ -1,3 +1,4 @@
 function go(){
-  alert("going");
+  dpd.poll.get({number: "9203686356"});
 }
+
