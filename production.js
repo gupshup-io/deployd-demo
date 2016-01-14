@@ -10,8 +10,6 @@ var config = {
 
   init(config);
 
-var request = require("request-promise");
-
 function init(config){
 
   console.log("Welcome to deployd!  Config loaded!");

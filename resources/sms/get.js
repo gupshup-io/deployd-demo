@@ -1,5 +1,3 @@
-debugger
-
 var options = { method: 'PUT',
   url: 'http://api.webaroo.com/SMApi/api/sms/msg',
   headers:

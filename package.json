@@ -14,6 +14,7 @@
     "dpd-event-extension": "0.0.3",
     "getenv": "^0.6.0",
     "lodash": "^4.0.0",
+    "request": "^2.67.0",
     "request-promise": "^2.0.0"
   }
 }

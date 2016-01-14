@@ -27,9 +27,8 @@ createPoll()
 function createPoll(){
   var options = {
     method: 'PUT',
-    url: 'http://api.webaroo.com/SMApi/api/smartmsg/poll',
+    uri: 'http://api.webaroo.com/SMApi/api/smartmsg/poll',
     headers: { 'content-type': 'application/x-www-form-urlencoded',
-       'postman-token': '7f446b90-bae3-7d21-fd98-a9bc9c8cbada',
        'cache-control': 'no-cache',
        apikey: '23694a99d1f4466dc6cb0241a54c5b21'
     },
@@ -47,7 +46,7 @@ function generateSignedLink(smid){
 
   var options = {
     method: 'POST',
-    url: 'http://api.webaroo.com/SMApi/api/smartmsg/msg/' + smid + '/signedlink',
+    uri: 'http://api.webaroo.com/SMApi/api/smartmsg/msg/' + smid + '/signedlink',
     headers:
      { 'content-type': 'application/x-www-form-urlencoded',
        'postman-token': '9f84b06e-0f26-16de-8b8f-17bcc12d55dd',
