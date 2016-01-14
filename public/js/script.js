@@ -1,5 +1,5 @@
-function go(){
-  dpd.poll.get({number: $('#mobile-number').val() })
+function go(type){
+  dpd[type].get({number: $('#mobile-number-'+type).val() })
     .then(function(data, err){
       if(err){
         alert("error sending message, check server status");
