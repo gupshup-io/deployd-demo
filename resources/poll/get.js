@@ -35,7 +35,7 @@ function createPoll(){
     uri: 'http://api.webaroo.com/SMApi/api/smartmsg/poll',
     headers: getHeaders(),
     form: { question: 'This is a sample test.',
-       callbackUrl: 'http://127.0.0.1/'
+       callbackUrl: 'http://fotoflo.ngrok.com/callback'
     }
   };
 
