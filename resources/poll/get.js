@@ -1,41 +1,63 @@
-$addCallback();
-request = require('request-promise');
-if(!query.number){
-  console.log("no query.number");
-  cancel();
-}
-query.number = "+1" + query.number;
-console.log("number: " +  query.number);
-createPoll()
-  .then(function(body){
-  //get the smid from poll
-  // and then generate a signed link
-  body = JSON.parse(body);
-  var smid = body.id;
+// create a poll resource
+// runs on get of dpdServerRoot/poll?query or dpd.poll.get({query1: item1})
+// Lives in it's own little closure
 
-  return generateSignedLink(smid);
-}).then(function(linkId){ //take the signed link
+init();
+
+createPoll()
+
+
+  .then(function(body){
+  body = JSON.parse(body);
+  return generateSignedLink(body.id); // link is signed to the userID
+})
+
+
+.then(function(linkId){
   linkId = JSON.parse(linkId);
-  linkId = linkId[0].id;
-  var url = "https://smapi.teamchat.com/SMApi/api/embed/" + linkId;
-  var message = "you got a poll " + url;
-  return dpd.sms.get( { text: message, number: query.number } ); // send it in
-}).then(function(getResults){
-  console.log("got :", getResults);
+  var message = "you got a poll "
+    + "https://smapi.teamchat.com/SMApi/api/embed/"
+    + linkId[0].id;
+  return dpd.sms.get( { text: message, number: query.number } ); // send it in to the sms resource
+})
+
+
+.then(function(getResults){
+  console.log("create-poll: ", getResults);
+  setResult( {code: 200, message: "success" }  );
   $finishCallback();
 })
+
+
 .catch(function(err){
-  console.log("poll-test  error: ", err);
+  console.log("Poll  error: ", err);
+  setResult( {error: true, code: 500, message: err} );
+  $finishCallback();
 });
 
+//
+//   FUNCTION DEFINITIONS
+//
+
+function init(){
+  $addCallback();
+
+  if(!_.has(query, "number")){
+    console.log("no query.number");
+    throw new Error("no phone number");
+  }
+  query.number = "+1" + query.number;
+  console.log("number: " +  query.number);
+}
 
 function createPoll(){
   var options = {
     method: 'PUT',
     uri: 'http://api.webaroo.com/SMApi/api/smartmsg/poll',
     headers: getHeaders(),
-    form: { question: 'This is a sample test.',
-       callbackUrl: 'http://fotoflo.ngrok.com/callback'
+    form: {
+      question: 'This is a sample poll.',
+      callbackUrl: config.dpdServerRoot + '/callback'
     }
   };
 
@@ -51,7 +73,7 @@ function generateSignedLink(smid){
     method: 'POST',
     uri: 'http://api.webaroo.com/SMApi/api/smartmsg/msg/' + smid + '/signedlink',
     headers: getHeaders(),
-    form: { destination: '+19203686356' }
+    form: { destination: query.number }
   };
 
   return request(options, function (error, response, body) {
@@ -66,6 +88,6 @@ function getHeaders(){
   return {
     'content-type': 'application/x-www-form-urlencoded',
     'cache-control': 'no-cache',
-    apikey: '23694a99d1f4466dc6cb0241a54c5b21'
+    apikey: config.sm_apikey
   };
 }

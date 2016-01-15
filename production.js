@@ -1,11 +1,14 @@
-var _ = require('lodash');
 var getenv = require('getenv');
 
-//getenv('DPD_SERVER_ROOT'),
-var config = {
-    'dpdServerRoot' :  'localhost'  ,
+_ = require('lodash'); // require lodash globally
+request = require('request-promise'); // require requestpromise globally
+
+// create the global config
+config = {
+    'dpdServerRoot' :  getenv('SM_DPD_SERVER_ROOT'),
     'dpd_port' :    2403,
     'dpd_env' :    'development',
+    'sm_apikey': '23694a99d1f4466dc6cb0241a54c5b21'
   };
 
   init(config);
