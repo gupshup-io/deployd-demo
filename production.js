@@ -11,7 +11,7 @@ config = {
     'sm_apikey': '23694a99d1f4466dc6cb0241a54c5b21'
   };
 
-  init(config);
+init(config);
 
 function init(config){
 
@@ -42,3 +42,15 @@ function init(config){
 
   console.log("");
 }
+
+//
+// global functions
+//
+
+getHeaders = function getHeaders(){
+  return {
+    'content-type': 'application/x-www-form-urlencoded',
+    'cache-control': 'no-cache',
+    'apikey' : config.sm_apikey
+  };
+};

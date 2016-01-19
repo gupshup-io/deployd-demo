@@ -7,17 +7,14 @@ init();
 createPoll()
 
 
-  .then(function(body){
+.then(function(body){
   body = JSON.parse(body);
-  return generateSignedLink(body.id); // link is signed to the userID
+  return dpd.sign.get( { smid: body.id, number: query.number } ); // link is signed to the userID
 })
 
 
-.then(function(linkId){
-  linkId = JSON.parse(linkId);
-  var message = "you got a poll "
-    + "https://smapi.teamchat.com/SMApi/api/embed/"
-    + linkId[0].id;
+.then(function(link){
+  var message = "you got a poll " + link;
   return dpd.sms.get( { text: message, number: query.number } ); // send it in to the sms resource
 })
 
@@ -32,7 +29,7 @@ createPoll()
 .catch(function(err){
   console.log("Poll  error: ", err);
   setResult( {error: true, code: 500, message: err} );
-  $finishCallback();
+  $finishCallback();  // required by deployd for nested callbacks
 });
 
 //
@@ -40,7 +37,7 @@ createPoll()
 //
 
 function init(){
-  $addCallback();
+  $addCallback(); // required by deployd for nested callbacks
 
   if(!_.has(query, "number")){
     console.log("no query.number");
@@ -67,27 +64,4 @@ function createPoll(){
   });
 }
 
-function generateSignedLink(smid){
 
-  var options = {
-    method: 'POST',
-    uri: 'http://api.webaroo.com/SMApi/api/smartmsg/msg/' + smid + '/signedlink',
-    headers: getHeaders(),
-    form: { destination: query.number }
-  };
-
-  return request(options, function (error, response, body) {
-    if (error) throw new Error(error);
-
-    console.log("generated signed link");
-  });
-
-}
-
-function getHeaders(){
-  return {
-    'content-type': 'application/x-www-form-urlencoded',
-    'cache-control': 'no-cache',
-    apikey: config.sm_apikey
-  };
-}

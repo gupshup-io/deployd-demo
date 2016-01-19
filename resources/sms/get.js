@@ -57,10 +57,4 @@ function sendSMS(query){
   });
 }
 
-function getHeaders(){
-  return {
-    'content-type': 'application/x-www-form-urlencoded',
-    'cache-control': 'no-cache',
-    apikey: '23694a99d1f4466dc6cb0241a54c5b21'
-  };
-}
+
