@@ -53,8 +53,8 @@ function createPoll(){
     uri: 'http://api.webaroo.com/SMApi/api/smartmsg/poll',
     headers: getHeaders(),
     form: {
-      question: 'This is a sample poll.',
-      callbackUrl: config.dpdServerRoot + '/callback'
+      question: query.questions[0],
+      callbackUrl: config.dpdServerRoot + '/callback?question=' + query.questions[0]
     }
   };
 
