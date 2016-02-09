@@ -8,7 +8,7 @@ createPoll()
 
 
 .then(function(body){
-  console.log("you got a body: " + body);
+  console.log("you got a poll: " + body);
   body = JSON.parse(body);
   return dpd.sign.get( { smid: body.id, number: query.number } ); // link is signed to the userID
 })
@@ -50,13 +50,14 @@ function init(){
 
 function createPoll(){
   console.log(config.sm_api_root + '/smartmsg/poll');
+  console.log("question: " + query.question );
   var options = {
     method: 'PUT',
     uri: config.sm_api_root + '/smartmsg/poll',
     headers: getHeaders(),
     form: {
-      question: query.questions[0],
-      callbackUrl: config.dpdServerRoot + '/callback?question=' + query.questions[0]
+      question: query.question,
+      callbackUrl: config.dpdServerRoot + '/callback?question=' + query.question
     }
   };
 

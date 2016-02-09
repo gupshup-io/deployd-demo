@@ -94,7 +94,7 @@
                     <div class="form-group row">
                         <label for="poll-question" class="col-sm-2 form-control-label">Question</label>
                         <div class="input-group col-sm-9">
-                          <input type="text" class="form-control question" id="poll-question" aria-describedby="poll-question">
+                          <input type="text" class="form-control question poll-question" id="poll-question" aria-describedby="poll-question">
                         </div>
                     </div>
 
@@ -107,16 +107,49 @@
                 <!-- END POLL DEMO -->
 
                 <!-- SURVEY DEMO -->
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <label for="mobile-number">Enter a Mobile Number to begin the survey demo</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon3">+1</span>
-                      <input type="text" class="form-control" id="mobile-number-survey" aria-describedby="basic-addon3">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick='go("survey")'>Go!</button>
-                      </span>
+                <div class="panel panel-default poll">
+                  <div class="panel-body form">
+
+                    <!-- MOBILE NUMBER -->
+                    <div class="row">
+                        <label>Survey</label>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 form-control-label">Number</label>
+                        <div class="input-group col-sm-9">
+                          <span class="input-group-addon" id="CountryCode">+1</span>
+                          <input type="text" class="form-control" id="mobile-number-survey" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="survey-question" class="col-sm-2 form-control-label">Question</label>
+                        <div class="input-group col-sm-9">
+                          <input type="text" class="form-control question" id="survey-question" aria-describedby="survey-question">
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default survey" id="surveyOption-1">
+                      <div class="panel-body form" id="surveyChoices">
+                        <div class="form-group row">
+                            <label for="survey-option" class="col-sm-2 form-control-label">Option 1</label>
+                            <div class="input-group col-sm-9">
+                                <input type="text" class="form-control option" id="survey-option" aria-describedby="survey-option">
+                            </div>
+                        </div>
+                        <div class="form-group row" id="surveyOption-2">
+                            <label for="survey-option" class="col-sm-2 form-control-label">Option 2</label>
+                            <div class="input-group col-sm-9">
+                                <input type="text" class="form-control option" id="survey-option" aria-describedby="survey-option">
+                            </div>
+                        </div>
+                        <button class="btn btn-caution" type="button" onclick='options.add()';>Add Option</button>
+                      </div>
+                    </div>
+
+                    <button class="btn btn-success" type="button" onclick='go("survey")';>Send Survey</button>
                   </div>
                   <p id="successmsg-survey" class="hide">Success!</p>
                   <p id="errormsg-survey" class="hide">Success!</p>

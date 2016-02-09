@@ -49,16 +49,18 @@ function init(){
 
 function createSurvey(){
 
+  console.log("Creating survey with options ");
+  console.log(query);
+
   var url = config.sm_api_root + '/smartmsg/survey?';
-  var questions = [ 'test1', 'test2', 'test3' ];
 
   url += "options=";
-  for(var i in questions){
-    url += escape(questions[i]) + ';';
+  for(var i in query.options){
+    url += escape(query.options[i]) + ';';
   }
 
-  url += "&question=" + escape("this is my question?");
-  url += "&callbackUrl=" + config.dpdServerRoot + '/callback';
+  url += "&question=" + escape( query.question);
+  url += "&callbackUrl=" + config.dpdServerRoot + '/callback?' + 'question='+query.question +"&";
 
   console.log("***** SURVEY URL *****: "  + url);
 
