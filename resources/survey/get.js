@@ -49,15 +49,18 @@ function init(){
 
 function createSurvey(){
 
-  var url = 'http://api.webaroo.com/SMApi/api/smartmsg/survey?';
+  var url = config.sm_api_root + '/smartmsg/survey?';
   var questions = [ 'test1', 'test2', 'test3' ];
 
+  url += "options=";
   for(var i in questions){
-    url += "options=" + escape(questions[i]) + '&';
+    url += escape(questions[i]) + ';';
   }
 
-  url += "question=" + escape("this is my question?");
+  url += "&question=" + escape("this is my question?");
   url += "&callbackUrl=" + config.dpdServerRoot + '/callback';
+
+  console.log("***** SURVEY URL *****: "  + url);
 
   var options = {
     method: 'PUT',

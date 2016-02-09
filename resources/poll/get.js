@@ -8,6 +8,7 @@ createPoll()
 
 
 .then(function(body){
+  console.log("you got a body: " + body);
   body = JSON.parse(body);
   return dpd.sign.get( { smid: body.id, number: query.number } ); // link is signed to the userID
 })
@@ -48,9 +49,10 @@ function init(){
 }
 
 function createPoll(){
+  console.log(config.sm_api_root + '/smartmsg/poll');
   var options = {
     method: 'PUT',
-    uri: 'http://api.webaroo.com/SMApi/api/smartmsg/poll',
+    uri: config.sm_api_root + '/smartmsg/poll',
     headers: getHeaders(),
     form: {
       question: query.questions[0],

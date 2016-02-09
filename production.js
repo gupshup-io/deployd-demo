@@ -8,7 +8,8 @@ config = {
     'dpdServerRoot' :  getenv('SM_DPD_SERVER_ROOT'),
     'dpd_port' :    2403,
     'dpd_env' :    'development',
-    'sm_apikey': '23694a99d1f4466dc6cb0241a54c5b21'
+    'sm_apikey': getenv('SM_APIKEY'),
+    'sm_api_root': 'http://api.gupshup.io/sm/api'
   };
 
 init(config);

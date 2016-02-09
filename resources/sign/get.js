@@ -3,7 +3,7 @@ init();
 generateSignedLink(query.smid, query.number)
   .then(function(link){
     link = JSON.parse(link);
-    link = "https://smapi.teamchat.com/SMApi/api/embed/" + link[0].id;
+    link = link[0].embedlink;
     console.log("generated signed link: ", link);
 
     setResult(link);
@@ -33,9 +33,11 @@ function init(){
 
 function generateSignedLink(smid, number){
 
+  console.log("link : " + config.sm_api_root + '/smartmsg/msg/' + smid + '/signedlink');
+
   var options = {
     method: 'POST',
-    uri: 'http://api.webaroo.com/SMApi/api/smartmsg/msg/' + smid + '/signedlink',
+    uri: config.sm_api_root + '/smartmsg/msg/' + smid + '/signedlink',
     headers: getHeaders(),
     form: { destination: number }
   };

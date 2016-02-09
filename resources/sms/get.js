@@ -43,7 +43,7 @@ function init(){
 
 function sendSMS(query){
   var options = { method: 'PUT',
-    url: 'http://api.webaroo.com/SMApi/api/sms/msg',
+    url: config.sm_api_root + '/sms/msg',
     headers: getHeaders(),
     form:
      { destination: query.number,
