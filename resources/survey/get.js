@@ -15,7 +15,7 @@ createSurvey()
 })
 
 .then(function(link){ //take the signed link
-  var message = "you got a survey " + link;
+  var message = query.question + " Survey: " + link;
   return dpd.sms.get( { text: message, number: query.number } ); // send it in
 })
 
