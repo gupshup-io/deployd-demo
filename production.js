@@ -2,15 +2,17 @@ var getenv = require('getenv');
 
 _ = require('lodash'); // require lodash globally
 request = require('request-promise'); // require requestpromise globally
+shellQuoteParse = require('shell-quote').parse;
 
 // create the global config
 config = {
     'dpdServerRoot' :  getenv('SM_DPD_SERVER_ROOT'),
+    'sm_apikey': getenv('SM_APIKEY'),
     'dpd_port' :    2403,
     'dpd_env' :    'development',
-    'sm_apikey': getenv('SM_APIKEY'),
-    'sm_api_root': 'http://api.gupshup.io/sm/api'
+    'sm_api_root': 'http://api.gupshup.io/sm/api',
   };
+
 
 init(config);
 
