@@ -18,16 +18,16 @@ then point your browser to:
 http://localhost:2403/ or address.to.your.server.tld
 
 ## code structure and hints ##
-node_modules - dependancies
-production.js - the runscript where global and env variables are set
-public - where the static assets are - index.html is accessable at /index.html
-dpd.js - this project relies on the deployd.com framework.  dpd.js presents tools for interacting with the REST api's deployd provides
+/node_modules - dependancies, listed in package.json.
+/production.js - the runscript where global and env variables are set
+/public - where the static assets are - index.html is accessable at /index.html
+/dpd.js - this project relies on the deployd.com framework.  dpd.js presents tools for interacting with the REST api's from html. Otherwise they are all open.
 
-resources 
+/resources 
     - these are all accessable at http://localhost:2403/dashboard
     - they provide REST endpoints at /resource_name
-    - example resources/form/get.js is accessable from http://localhost:2403/form?query_key=value or from the front end or other reasorces by calling the method dpd.form.get({query_key:value})
-    - they query_key is available from within /form/get.js as the variable query.query_key
+    - for example, /resources/form/get.js is accessable via GET request to http://localhost:2403/form?query_key=value or from the front end or other resources by calling the method dpd.form.get({query_key:value})
+    - In the above example, the variable query_key is available from within /resources/form/get.js as the variable query.query_key
 
 ## More about the deployd framework ##
 http://deployd.com

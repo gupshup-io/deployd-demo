@@ -1,15 +1,13 @@
-// create a sms resource
-// runs on get of dpdServerRoot/sms?query or dpd.sms.get({query1: item1})
+// create a quotes resource
+// runs on get of dpdServerRoot/quotebot?keyword=kw or dpd.quotebot.get({keyword: "kw"})
 // Lives in it's own little closure
-
-var mashape_endpoint = 'https://andruxnet-random-famous-quotes.p.mashape.com/';
 
 init();
 
 postMashape(query.message)
 
 .then(function(results){
-  results = JSON.parse(results)
+  results = JSON.parse(results);
   console.log("Quote :", results || "Success");
   setResult( results.quote + " -" + results.author );
   $finishCallback();
@@ -37,8 +35,8 @@ function init(){
 }
 
 function postMashape(query){
-  var options = { method: 'PUT',
-    url: mashape_endpoint,
+  var options = { method: 'POST',
+    url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
     headers: {
         "X-Mashape-Key" : config.mashape_apikey,
         "Content-Type" :  "application/x-www-form-urlencoded",
