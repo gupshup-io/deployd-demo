@@ -8,6 +8,7 @@ shellQuoteParse = require('shell-quote').parse;
 config = {
     'dpdServerRoot' :  getenv('SM_DPD_SERVER_ROOT'),
     'sm_apikey': getenv('SM_APIKEY'),
+    'mashape_apikey': getenv('MASHAPE_APIKEY'),
     'dpd_port' :    2403,
     'dpd_env' :    'development',
     'sm_api_root': 'http://api.gupshup.io/sm/api',

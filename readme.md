@@ -8,7 +8,8 @@
 4) Run the server:
 `
 export SM_DPD_SERVER_ROOT=address.to.your.server.tld
-export SM_APIKEY=your_api_key
+export SM_APIKEY=your_gupshup_api_key
+export MASHAPE_APIKEY=your_mashape_api_key
 cd gupshup-demo
 npm install 
 node production.js
