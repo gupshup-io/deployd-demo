@@ -25,7 +25,6 @@ postMashape(query.message)
 
 function init(){
   validateQuery();
-  console.log(query.message);
   if( (query.message == 'quote')){
     return;
   } else {

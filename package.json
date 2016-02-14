@@ -12,6 +12,7 @@
     "deployd": "^0.8.7",
     "dpd-event": "0.0.2",
     "dpd-event-extension": "0.0.3",
+    "dpd-passport": "git+https://bitbucket.org/fotoflo/dpd-passport.git",
     "getenv": "^0.6.0",
     "google-translate": "^1.0.6",
     "lodash": "^4.0.0",
