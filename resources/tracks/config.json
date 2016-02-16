@@ -24,6 +24,14 @@
 			"required": false,
 			"id": "properties",
 			"order": 2
+		},
+		"timestamp": {
+			"name": "timestamp",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "timestamp",
+			"order": 3
 		}
 	}
 }
