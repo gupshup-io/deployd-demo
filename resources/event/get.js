@@ -1,1 +1,0 @@
-setResult({ json: query.query});

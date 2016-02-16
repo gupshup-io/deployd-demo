@@ -1,13 +1,21 @@
 {
 	"type": "Collection",
 	"properties": {
+		"owner": {
+			"name": "owner",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "owner",
+			"order": 0
+		},
 		"event": {
 			"name": "event",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "event",
-			"order": 0
+			"order": 1
 		},
 		"properties": {
 			"name": "properties",
@@ -15,7 +23,7 @@
 			"typeLabel": "object",
 			"required": false,
 			"id": "properties",
-			"order": 1
+			"order": 2
 		}
 	}
 }

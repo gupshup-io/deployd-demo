@@ -30,6 +30,12 @@ function handleShippoResponse(res){
        '*History:* ' + parseTrackingHistory(res.tracking_history);
   }
 
+  dpd.tracks.post({
+      owner: 'shippobot',
+      event: 'track',
+      properties: query
+    });
+
   setResult(result);
 }
 
@@ -70,7 +76,6 @@ function validateQuery(){
     if( !validateCarrier(m[1]) || m.length !== 3){
       console.log("to shippobot but imporper");
       printHelp(); // if it's to shippobot but imporper
-      cancel();
     }
     m.shift();
   }
@@ -102,8 +107,8 @@ function printHelp(){
   console.log("printing help");
   var h = '*Welcome to Shippobot* \n ' +
     'I can help you to track packages at seven different carriers. \n ' +
-    '*To use Shippobot* , you can DM me, or @me in a channel with: <carrier> <tracking number>. \n' +
-    '*For example:* \" @shippobotippobot usps 9400110898680015376677\"\n ' +
+    '*To use Shippobot* , you can DM me, or say my name in a channel with: <carrier> <tracking number>. \n' +
+    '*For example:* \" shippobot usps 9400110898680015376677\"\n ' +
     '*I support the following carriers:* ups, usps, fedex, dhl_express, canada_post, lasership and mondial_relay';
   setResult(h);
   $finishCallback();
