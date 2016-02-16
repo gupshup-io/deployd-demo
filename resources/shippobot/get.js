@@ -1,6 +1,8 @@
-// create a quotes resource
+// create a shippobot
 // runs on get of dpdServerRoot/shippobot?keyword=kw or dpd.shippobot.get({keyword: "kw"})
 // Lives in it's own little closure
+
+// other dependancies resources/tracks, /production.js /readme.md
 
 $addCallback(); // deployd method to nest callbacks/promises inside event functions
 
