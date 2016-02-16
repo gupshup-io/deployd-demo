@@ -63,23 +63,24 @@ function validateQuery(){
     cancel();
   }
 
-  var m = query.message.toLowerCase();
+  var m = query.message.toLowerCase().split(" ");
+  console.log(m);
 
-  m = m.split(" ");
-
-  if(m.length != 2){
-    console.log("invalid message");
-    cancel();
+  if( atShippobot(m[0]) ){ // it's to shippobot
+    if( !validateCarrier(m[1]) || m.length !== 3){
+      console.log("to shippobot but imporper");
+      printHelp(); // if it's to shippobot but imporper
+      cancel();
+    }
+    m.shift();
   }
 
-  if( m[0] !== "usps"&&
-    m[0] !== "ups"   &&
-    m[0] !== "fedex" &&
-    m[0] !== "dhl_express" &&
-    m[0] !== "canada_post" &&
-    m[0] !== "lasership"   &&
-    m[0] !== "mondial_relay"  ){
-    console.log("invalid message");
+  if(m.length != 2){
+    cancel(); // invalid message
+  }
+
+  if( !validateCarrier(m[0]) ){
+    printHelp();
     cancel();
   }
 
@@ -87,6 +88,38 @@ function validateQuery(){
   query.carrier = m[0];
   query.trackingcode = m[1];
   return query;
+}
+
+function atShippobot(m){
+  var valid = false;
+  if(m == '@shippobot' || m == '@shippobot:' || m == 'shippobot'){
+    valid = true;
+  }
+  return valid;
+}
+
+function printHelp(){
+  console.log("printing help");
+  var h = '*Welcome to Shippobot* \n ' +
+    'I can help you to track packages at seven different carriers. \n ' +
+    '*To use Shippobot* , you can DM me, or @me in a channel with: <carrier> <tracking number>. \n' +
+    '*For example:* \" @shippobotippobot usps 9400110898680015376677\"\n ' +
+    '*I support the following carriers:* ups, usps, fedex, dhl_express, canada_post, lasership and mondial_relay';
+  setResult(h);
+  $finishCallback();
+}
+
+function validateCarrier(m){
+  if( m !== "usps"&&
+    m !== "ups"   &&
+    m !== "fedex" &&
+    m !== "dhl_express" &&
+    m !== "canada_post" &&
+    m !== "lasership"   &&
+    m !== "mondial_relay"  ){
+    return false;
+  }
+  return true;
 }
 
 function getShippo(){

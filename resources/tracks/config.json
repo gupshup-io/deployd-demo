@@ -1,0 +1,21 @@
+{
+	"type": "Collection",
+	"properties": {
+		"event": {
+			"name": "event",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "event",
+			"order": 0
+		},
+		"properties": {
+			"name": "properties",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "properties",
+			"order": 1
+		}
+	}
+}
