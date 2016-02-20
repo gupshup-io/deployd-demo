@@ -2,10 +2,10 @@
 
 ## Installation ##
 
-1) Set env variables so the server knows its own address (for callbacks)
-2) Install nodejs
-3) Install dependancies (enumerated in package.json);
-4) Run the server:
+* Set env variables so the server knows its own address (for callbacks)
+* Install nodejs
+* Install dependancies (enumerated in package.json);
+* Run the server:
 `
 export SM_DPD_SERVER_ROOT=address.to.your.server.tld
 export SM_APIKEY=your_gupshup_api_key
