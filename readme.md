@@ -14,8 +14,11 @@ cd gupshup-demo
 npm install 
 node production.js
 ```
-then point your browser to:
+*then point your browser to:
 http://localhost:2403/ or address.to.your.server.tld
+
+*Setting up the add to slack button:
+https://docs.google.com/document/d/12D95bidpp84Ph0TS80aKr8bn3nQtfWExt1GiRSDjCqA/edit
 
 ## code structure and hints ##
 /node_modules - dependancies, listed in package.json.
