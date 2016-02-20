@@ -6,14 +6,14 @@
 * Install nodejs
 * Install dependancies (enumerated in package.json);
 * Run the server:
-`
+```
 export SM_DPD_SERVER_ROOT=address.to.your.server.tld
 export SM_APIKEY=your_gupshup_api_key
 export MASHAPE_APIKEY=your_mashape_api_key
 cd gupshup-demo
 npm install 
 node production.js
-`
+```
 then point your browser to:
 http://localhost:2403/ or address.to.your.server.tld
 
